@@ -1,0 +1,916 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<math.h>
+#define PI 3.1415926535897
+int fact(int n)
+{
+    if (n == 1){
+    return 1;
+}
+    return n * fact(n - 1);
+}
+double getradian(double _num){
+	return _num * (PI/(double)180);
+}
+double Sin(double rad){
+	return cos(rad);
+}
+double Cos(double rad){
+	return -sin(rad);
+}
+double Tan(double rad){
+	return pow((1/cos(rad)),2);
+}
+double Sec(double rad){
+	return (1/cos(rad))*(tan(rad));
+}
+double Csc(double rad){
+	return -(1/sin(rad))*(1/tan(rad));
+}
+double Cot(double rad){
+	return -pow((1/sin(rad)),2);
+}
+double exponent_l(int num){
+	return 1/(double)num;
+}
+double exponent_e(int num,int exp){
+	return (pow(num,exp)*log(num));
+}
+double l(int _num,int num){
+	return 1/(num*log(_num));
+}
+double Rsin(double rad){
+	return -cos(rad);
+}
+double Rcos(double rad){
+	return sin(rad);
+}
+double Rsec2(double rad){
+	return (tan(rad));
+}
+double Rcsc2(double rad){
+	return -(1/tan(rad));
+}
+double Rsec_tan(double rad){
+	return (1/sin(rad));
+}
+double Rcsc_cot(double rad){
+	return -(1/cos(rad));
+}
+double differential(int _num,int _ex){
+	return _num*_ex;
+}
+double integral_index(int _num,int _exp){
+	return (pow(_num,_exp)/log(_num));
+}
+double integral_exp(int _num,int _exp){
+	return ((double)_num/(double)(_exp+1));
+}
+double integral_fou(int _exp){
+	return log(_exp);
+}
+double base_formula3(double res1,double res2){
+	return res1-res2;
+}
+double phr_len(double _A,double _B,double _C,double _D){
+	return sqrt(pow(_A,2)+pow(_B,2)+pow(_C,2)-4*_D)/2;
+}
+double line(double _point,double _minus){
+	return (pow(_point,2))-(pow(_minus/2,2));
+}
+double line_C(double _point,double _minus){
+	return (pow(_point,2))-(pow(_minus/2,2));
+}
+double line_l(double _point){
+	return 4*_point;
+}
+double formula_1(double _x1,double _y1,double _z1,double _x2,double _y2,double _z2){
+	return sqrt(pow((_x2-_x1),2)+pow((_y2-_y1),2)+pow((_z2-_z1),2));
+}
+double formula_2(double _x2,double _y2,double _z2){
+	return sqrt(pow(_x2,2)+pow(_y2,2)+pow(_z2,2));
+}
+double Orthodontist(double _len,double _rad){
+	return _len*cos(_rad);
+}
+double Orthodontist_Area(double _area,double _rad){
+	return _area*cos(_rad);
+}
+double size(double _a1,double _a2){
+	return sqrt(pow(_a1,2)+pow(_a2,2));
+}
+double formula_V1(double _a1,double _b1,double _a2,double _b2,double _rad){
+	return sqrt(abs(_a1*_b1))*sqrt(abs(_a2*_b2))*cos(_rad);
+}
+double formula_V2(double _a1,double _b1,double _a2,double _b2){
+	return _a1*_b1*_a2*_b2;
+}
+double size_Vrad(double _a1,double _b1,double _a2,double _b2){
+	return ((_a1*_b1)+(_a2*_b2))/((sqrt(pow(_a1,2)+pow(_a2,2)))*(sqrt(pow(_b1,2)+pow(_b2,2))));
+}
+double size_V(double _a1,double _a2){
+	return sqrt(pow(_a1,2)+pow(_a2,2));
+}
+int main(){
+	while(1){
+	int sel;
+	int state,n;
+    int size,i,rel;
+	double prob,V,excp1,excp2,O,p,q,a,number,rad,result,_e;
+	int num,num1,num2,com,j,count1=0,count2=0,m;
+	double prob1,prob2,prob3,dep,prob4,_Under,_High,c,fou,b,point,res,minus,sum,area;
+	double bucket=0;
+	double _a1,_a2,_c1;
+	double _b1=0,_c2=0,_b2=0;
+	double A,B,C,D,cen[3],len;
+	int prob_s3=1;
+	int prob_s4=1;
+	int prob_s1,prob_s2;
+	int Under,High,_exp,ex,time;
+	int speed=0;
+	int accel=0;
+	char selection;
+	int k;
+	double x1,y1,z1;
+	double x2,y2,z2;
+	double lines;
+	double a1,a2,b1,b2;
+	printf("옵션을 고르십시오\n");
+	printf("------------------- 1. 확률 2. 통계 3. 미분 4. 적분 5. 기하 6. 벡터-------------------\n");
+	scanf("%d",&sel);
+	switch(sel){
+		case 1:
+			system("cls");
+			printf("어떠한 수식을 계산하시겠습니까?\n");
+			printf("------------------- 1. 독립사건의 확률 2.독립시행의 확률 3. 종속사건의 확률 -------------------\n") ;
+			scanf("%d",&state);
+			switch(state){
+				case 1:
+			printf("확률:");
+			scanf("%lf",&prob1);
+					if(prob1<=0||prob1>1){
+						printf("조건 오류\n");
+						break; 
+					}
+			printf("뽑을 갯수:");
+			scanf("%d",&num);
+			prob2=pow(prob1,num);
+			prob2=100*prob2; 
+			printf("독립사건에서 %lf의 확률로 %d개를 뽑을 확률은 %lf 퍼센트입니다.\n",prob1,num,prob2);
+			break;
+				case 2:
+					printf("몇번 시행을 하시겠습니까?");
+					scanf("%d",&num1);
+					printf("몇개를 뽑으시겠습니까?");
+					scanf("%d",&num2);
+					printf("뽑힐 확률?");
+					scanf("%lf",&prob1);
+					if(prob1<=0||prob1>1){
+						printf("조건 오류\n");
+						break; 
+					}
+					prob2=1-prob1;
+					com=fact(num1)/(fact(num2)*fact(num1-num2));
+					dep=pow(prob1,(num1-num2))*pow(prob2,num2); 
+					prob1=com*dep;
+					printf("%dC%d=%d\n",num1,num2,com);
+					printf("%lf\n",dep);
+					prob1=prob1*100;
+					printf("%d번 시행중 %d번 뽑힐 확률은 %lf퍼센트 입니다.",num1,num2,prob1);//수 정  
+			break;
+				case 3:
+					printf("확률(a,b로 표현)\n");
+					scanf("%d",&prob_s1);
+					scanf("%d",&prob_s2);
+					if(prob_s1>prob_s2){
+					    printf("조건 오류\n");
+					    break;
+					}
+				prob_s3=1;
+				prob_s4=1;
+				printf("뽑을 갯수:");
+				scanf("%d",&num);
+				prob3=((float)prob_s1/(float)prob_s2);
+					for(i=prob_s1;i>=1;i--){
+				prob_s3*=i;
+				count1++;
+				if(count1==num){
+				break;
+			}
+			}
+			printf("\n");
+				for(j=prob_s2;j>=1;j--){
+					prob_s4*=j;
+				count2++;
+				if(count2==num){
+			break;
+			}
+		};
+				prob4=((float)prob_s3/(float)prob_s4);
+				prob4=prob4*100;
+				printf("종속 사건에서 %lf의 확률중 %d번 뽑힐 확률은 %lf퍼센트 입니다.\n",prob3,num,prob4);
+				break;
+		}
+		break;
+		case 2:
+			system("cls");
+			printf("어떠한 수식을 계산하시겠습니까?\n");
+			printf("------------------- 1. 이산확률분수의 평균,분산,표준편차 2.이산분포의 평균,분산,표준편차 3.모평균의 추정 4.모비율의 추정-------------------\n") ;
+			scanf("%d",&state);
+			switch(state){
+				case 1:
+				printf("Enter Size:");
+    			scanf("%d", &size);
+
+    			int *N = malloc(sizeof(int) * size);
+				double *P = malloc(sizeof(double)*size);
+    					for (i = 0; i < size; i++){
+		    			    printf("Enter %d's num:",i+1);
+		    			    scanf("%d",&num);
+							N[i] = num;
+						printf("Enter %d's prob:",i+1);
+   			   			  scanf("%lf",&prob);
+							P[i] = prob;
+   			   			  bucket+=P[i];
+   			   			  if(prob<=0||bucket>1.0){
+					        printf("조건 오류\n");
+					        break;
+							}
+				excp1+=pow(N[i],2)*P[i];
+				excp2+=N[i]*P[i];
+    				}
+					excp2=pow(excp2,2);
+   				 V=excp1-excp2;
+    			O=sqrt(V);
+    			printf("기댓값:%lf\n",excp2);
+    			printf("분산:%lf\n",V);
+    			printf("표준편차:%lf\n",O);
+    			free(N);
+    			free(P);
+					break;
+				case 2:
+				printf("이항분포의 몇회 시행하는가?");
+				scanf("%d",&n);
+				printf("사건이 일어날 확률은 얼마인가?");
+				scanf("%lf",&p);
+				if(p<=0||p>1){
+					printf("조건 오류\n");
+					break;
+				}
+				q=1-p;
+				excp1=n*p;
+				V=n*p*q;
+				O=sqrt(V);
+				printf("이항분포의 기댓값(확률)은 %lf\n",excp1);
+				printf("이항분포의 분산은 %lf\n",V);
+				printf("이항분포의 표준편차는 %lf\n",O); 
+					break;
+				case 3:
+				printf("신뢰도는 몇%인가?");
+					scanf("%d",&rel);
+					printf("표준편차:");
+					scanf("%lf",&O);
+					printf("값:");
+					scanf("%lf",&number);
+					a=O/sqrt(number);
+					switch(rel){
+						case 95: printf("%.4lf\n",a*1.96);
+						break;
+						case 99: printf("%.4lf\n",a*2.58);
+						break;
+					}
+					break;
+				case 4:
+				printf("신뢰도는 몇%인가?");
+				scanf("%d",&rel);
+				printf("크기:");
+				scanf("%d",&num);
+				printf("사건이 일어날 확률은 얼마인가?");
+				scanf("%lf",&p);
+				q=1-p;
+				a=sqrt(p*q/num);
+				printf("%lf\n",p*q);
+				printf("%.10lf\n",a);
+				switch(rel){
+				case 95: printf("%lf\n",p-(a*1.96));
+						 printf("%lf\n",p+(a*1.96));
+				break;
+				case 99: printf("%lf\n",p-(a*2.58));		 
+						 printf("%lf\n",p+(a*2.58));
+				break;
+			}
+					break;
+			}
+			break;
+		case 3:
+			system("cls");
+			printf("어떠한 수식을 계산하시겠습니까?\n");
+			printf("------------------- 1. 삼각함수의 미분법 2.로그함수의 미분법 3.지수함수의 미분법 4.속도와 가속도 5.다항미분법-------------------\n") ;
+			scanf("%d",&state);
+			switch(state){
+				case 1:
+					printf("무엇을 미분하시겠습니까?(1. sin,2. cos, 3.tan, 4.sec, 5.csc, 6.cot)");
+					scanf("%d",&num);
+					printf("각도를 입력하십시오:");
+					scanf("%lf",&rad);
+					rad=getradian(rad);
+					switch(num){
+						case 1: result=Sin(rad);
+								printf("%lf\n",result);
+						break;
+						case 2: result=Cos(rad);
+								printf("%lf\n",result);
+						break;
+						case 3: result=Tan(rad);
+								printf("%lf\n",result);
+						break;
+						case 4: result=Sec(rad);
+								printf("%lf\n",result);
+						break;
+						case 5: result=Csc(rad);
+								printf("%lf\n",result);
+						break;
+						case 6: result=Cot(rad);
+								printf("%lf\n",result);
+						break;
+					}
+					break;
+				case 2:	
+				printf("log의 밑의 값을 입력하십시오(만약 e면 0을 입력):");
+				scanf("%d",&Under);
+				printf("log의 값을 입력하십시오:");
+				scanf("%d",&num1);
+				num1=abs(num1);
+				if(Under==0){
+					result=exponent_l(num1);
+					printf("%lf\n",result);
+				}
+				else{
+					result=l(Under,num1);
+					printf("%lf\n",result);
+				}
+					break;
+				case 3:
+				printf("값을 입력하십시오:");
+				scanf("%d",&Under);
+				printf("값의 지수승을 입력하십시오:");
+				scanf("%d",&_exp);
+				result=exponent_e(Under,_exp);
+				printf("%lf",result);
+					break;
+				case 4:
+					printf("Enter Size:");
+				    scanf("%d", &size);
+				    printf("시간은 몇초인가?");
+				    scanf("%d",&time);
+				    int *x = malloc(sizeof(int) * size);
+					int *exp = malloc(sizeof(int)*size);
+					i=size;
+					for(i=size;i>=0;i--){
+						ex=i;
+						if(ex==0){
+							printf("상수값은?");
+							scanf("%d",&Under);
+							break;
+						}
+						printf("x^%d의 변수값은?",i);
+						scanf("%d",&Under);
+						x[i]=differential(Under,ex);
+						--ex;
+						exp[i]=ex;
+						speed+=x[i]*pow(time,exp[i]);
+					}
+					printf("속도:%d\n",speed);
+					for(i=size;i>=0;i--){
+					if(exp[i]==0){
+							printf("%d",x[i]);
+							break;
+						}
+						if(x[i]==0){
+							continue;
+						}
+						printf("%dx^%d+",x[i],exp[i]);
+					}
+					printf("\n");
+					for(i=size;i>0;i--){
+						ex=i-1;
+						x[i]=differential(x[i],ex);
+						--ex;
+						exp[i]=ex;
+						accel+=x[i]*pow(time,exp[i]);
+					}
+					printf("가속도:%d\n",accel);
+					for(i=size;i>0;i--){
+					if(exp[i]==0){
+							printf("%d\n",x[i]);
+							break;
+						}
+						if(x[i]==0){
+							continue;
+						}
+						printf("%dx^%d+",x[i],exp[i]);
+					}
+					break;
+				case 5:
+				printf("Enter Size:");
+			    scanf("%d", &size);
+			    int *U = malloc(sizeof(int) * size);
+				int *H = malloc(sizeof(int)*size);
+				i=size;
+				for(i=size;i>=0;i--){
+					ex=i;
+					if(ex==0){
+						printf("상수값은?");
+						scanf("%d",&num);
+						break;
+					}
+					printf("x^%d의 변수값은?",i);
+					scanf("%d",&num);
+					U[i]=differential(num,ex);
+					--ex;
+					H[i]=ex;
+				}
+				for(i=size;i>0;i--){
+				if(H[i]==0){
+						printf("%d\n",U[i]);
+						break;
+					}
+					if(U[i]==0){
+							continue;
+					}
+					printf("%dx^%d+",U[i],H[i]);
+				}
+					break;
+			}
+			break;
+		case 4:
+			system("cls");
+			printf("어떠한 수식을 계산하시겠습니까?\n");
+			printf("------------------- 1. 삼각함수의 적분법 2.무리수와 지수함수의 적분법 3.부분적분법 4.다항적분법 5.두 곡선 사이의 넓이-------------------\n") ;
+			scanf("%d",&state);
+			switch(state){
+				case 1:
+				printf("무엇을 적분하시겠습니까?(1. sin,2. cos, 3.sec^2, 4.csc^2, 5.sec*tan, 6.csc*cot)");
+				scanf("%d",&num);
+				printf("각도를 입력하십시오:");
+				scanf("%lf",&rad);
+				rad=getradian(rad);
+				switch(num){ 
+					case 1: result=Rsin(rad);
+							printf("%lf\n",result);
+					break;
+					case 2: result=Rcos(rad);
+							printf("%lf\n",result);
+					break;
+					case 3: result=Rsec2(rad);
+							printf("%lf\n",result);
+					break;
+					case 4: result=Rcsc2(rad);
+							printf("%lf\n",result);
+					break;
+					case 5: result=Rsec_tan(rad);
+							printf("%lf\n",result);
+					break;
+					case 6: result=Rcsc_cot(rad);
+							printf("%lf\n",result);
+					break;
+				}
+					break;
+				case 2:
+				printf("무리수면1 지수면2 입력:");
+				scanf("%d",&sel);
+				if(sel==1){
+					printf("무리수의 몇승인가?");
+					scanf("%d",&ex);
+					_e=exp(ex);
+					printf("%lf",_e);
+				}
+				if(sel==2){
+					printf("변수의 값은?");
+					scanf("%d",&num);
+					printf("몇승인가?");
+					scanf("%d",&ex);
+					a=integral_index(num,ex);
+					printf("%lf",a);
+				}
+					break;
+				case 3:
+				printf("Enter Size:");
+			    scanf("%d", &size);
+				printf("부분적분의 위의값을 입력하십시오:");
+				scanf("%d",&Under);
+				printf("부분적분의 아랫값을 입력하십시오:");
+				scanf("%d",&High);
+				if(Under<High){
+					printf("조건 오류\n");
+					break;
+				}
+			    double *x = malloc(sizeof(double) * size);
+				int *exp = malloc(sizeof(int)*size);
+				i=size;
+				for(i=size;i>=0;i--){
+					ex=i;
+					if(ex==0){
+						printf("상수값은?");
+						scanf("%d",&num);
+						x[i]=integral_exp(num,0);
+						break;
+					}
+					printf("x^%d의 변수값은?",i);
+					scanf("%d",&num);
+					x[i]=integral_exp(num,ex);
+					++ex;
+					exp[i]=ex;
+					_Under+=x[i]*pow(Under,exp[i]);
+					_High+=x[i]*pow(High,exp[i]);
+				}
+				for(i=size;i>0;i--){
+					if(x[i]==0){
+						continue;
+					}
+					printf("%lfx^%d+",x[i],exp[i]);
+					if(i==1){//continue추가 
+					printf("%lfx",x[0]);
+				}
+				}
+				printf("\n");
+				c=_Under-_High;
+				printf("%lf\n",_Under);
+				printf("%lf\n",_High);
+				printf("%lf\n",c);
+					break;
+				case 4:
+				printf("다항 함수면1  분수면2 입력:");
+			    scanf("%d",&sel);
+			    if(sel==1){
+				printf("Enter Size:");
+			    scanf("%d", &size);
+			    double *x = malloc(sizeof(double) * size);
+				int *exp = malloc(sizeof(int)*size);
+				i=size;
+				for(i=size;i>=0;i--){
+					ex=i;
+					if(ex==0){
+						printf("상수값은?");
+						scanf("%d",&num);
+						x[i]=integral_exp(num,0);
+						break;
+					}
+					printf("x^%d의 변수값은?",i);
+					scanf("%d",&num);
+					x[i]=integral_exp(num,ex);
+					++ex;
+					exp[i]=ex;
+				}
+				for(i=size;i>0;i--){
+					if(x[i]==0){
+						continue;
+					}
+					printf("%lfx^%d+",x[i],exp[i]);
+					if(i==1){
+					printf("%lfx",x[0]);
+				}
+				}
+			}
+				if(sel==2){
+					printf("분수의 분모값은?");
+					scanf("%d",&num);
+					if(num==0){
+						printf("조건 오류\n");
+						break;
+					}
+					fou=integral_fou(num);
+					printf("%lf\n",fou);
+				}
+					break;
+				case 5:printf("Enter Size:");
+    scanf("%d", &size);
+	printf("부분적분의 위의값을 입력하십시오:");
+	scanf("%d",&High);
+	printf("부분적분의 아랫값을 입력하십시오:");
+	scanf("%d",&Under);
+	if(High<Under){
+		printf("조건 오류\n");
+		break;
+	}
+    double *x1 = malloc(sizeof(double) * size);
+	int *exp1 = malloc(sizeof(int)*size);
+	i=size;
+	printf("첫번째 함수\n");
+	for(i=size;i>=0;i--){
+		ex=i;
+		if(ex==0){
+			printf("상수값은?");
+			scanf("%d",&num);
+			x1[i]=integral_exp(num,0);
+			break;
+		}
+		printf("x^%d의 변수값은?",i);
+		scanf("%d",&num);
+		num=abs(num);
+		x1[i]=integral_exp(num,ex);
+		++ex;
+		exp1[i]=ex;
+		_a1+=x1[i]*pow(High,exp1[i]);
+		_b1+=x1[i]*pow(Under,exp1[i]);
+}
+	for(i=size;i>0;i--){
+		if(x1[i]==0){
+			continue;
+		}
+		printf("%lfx^%d+",x1[i],exp1[i]);
+		if(i==1){
+		printf("%lfx",x1[0]);
+		}
+	}
+	printf("\n");
+    double *x2 = malloc(sizeof(double) * size);
+	int *exp2 = malloc(sizeof(int)*size);
+	i=size;
+	printf("두번째 함수\n");
+		for(i=size;i>=0;i--){
+		ex=i;
+		if(ex==0){
+			printf("상수값은?");
+			scanf("%d",&num);
+			x2[i]=integral_exp(num,0);
+			break;
+		}
+		printf("x^%d의 변수값은?",i);
+		scanf("%d",&num);
+		num=abs(num);
+		x2[i]=integral_exp(num,ex);
+		++ex;
+		exp2[i]=ex;
+		_a2+=x2[i]*pow(High,exp2[i]);
+		_b2+=x2[i]*pow(Under,exp2[i]);
+	}
+	for(i=size;i>0;i--){
+		if(x2[i]==0){
+			continue;
+		}
+		printf("%lfx^%d+",x2[i],exp2[i]);
+		if(i==1){
+		printf("%lfx",x2[0]);
+		}
+	}
+	printf("\n");
+		_c1=_a1-_b1;
+		_c2=_a2-_b2;
+		_c2=base_formula3(_c1,_c2);
+		_c2=abs(_c2);
+		printf("%lf\n",_c2);
+	}
+			break;
+		case 5:
+			system("cls");
+			printf("어떠한 수식을 계산하시겠습니까?\n");
+			printf("------------------- 1. 구의 방정식 2.쌍곡선의 방정식 3.타원의 방정식 4.포물선의 방정식-------------------\n") ;
+			scanf("%d",&state);
+			switch(state){
+				case 1:
+					printf("x^2+y^2+z^2+Ax+By+Cz+D에서 A의 값은?");
+					scanf("%lf",&A);
+					system("cls");
+					printf("x^2+y^2+z^2+%lfx+By+Cz+D에서 B의 값은?",A);
+					scanf("%lf",&B);
+					system("cls");
+					printf("x^2+y^2+z^2+%lfx+%lfy+Cz+D에서 C의 값은?",A,B);
+					scanf("%lf",&C);
+					system("cls");
+					printf("x^2+y^2+z^2+%lfx+%lfy+%lfz+D에서 D의 값은?",A,B,C);
+					scanf("%lf",&D);
+					system("cls");
+					if(pow(A,2)+pow(B,2)+pow(C,2)-4*D<=0){
+						exit(0);
+					}
+						cen[0]=A/2;
+						cen[0]=-cen[0];
+						cen[1]=B/2;
+						cen[1]=-cen[1];
+						cen[2]=C/2;
+						cen[2]=-cen[2];
+					printf("x^2+y^2+z^2+%lfx+%lfy+%lfz+%lf\n",A,B,C,D);
+					len=phr_len(A,B,C,D);
+					for(i=0;i<3;i++){
+					printf("%lf ",cen[i]);
+				}
+					printf("\n");
+					printf("%lf\n",len);
+					break;
+				case 2:
+				printf("타원의 방정식이 x축인가 y축인가?");
+				scanf("%s",&selection);
+				if(selection=='x'){
+					printf("초점 입력");
+					scanf("%lf",&point);
+					printf("거리의 차는 ?");
+					scanf("%lf",&minus);
+					if(minus<0||minus/2>point){
+						exit(0);
+					}
+					b=line(point,minus);
+					minus=pow((minus/2),2);
+					printf("x^2/%.3lf - y^2/%.3lf=1\n",minus,b);
+					c=sqrt(b)/sqrt(minus);
+					printf("점근선의 방정식은:y=%lfx",c);
+				}
+				if(selection=='y'){
+					printf("초점 입력");
+					scanf("%lf",&point);
+					printf("거리의 차는?");
+					scanf("%lf",&minus);
+					if(minus<0||minus/2>point){
+						exit(0);
+					}
+					a=line(point,minus);
+					minus=pow((minus/2),2);
+					printf("x^2/%.3lf - y^2/%.3lf=-1\n",a,minus);
+					c=sqrt(a)/sqrt(minus);
+					printf("점근선의 방정식은:y=-%lfx",c);
+				}
+				else{
+					break;
+				}
+					break;
+				case 3:
+					printf("타원의 방정식이 x축인가 y축인가?");
+					scanf("%s",&selection);
+					if(selection=='x'){
+						printf("초점 입력");
+						scanf("%lf",&point);
+						printf("거리의 합은?");
+						scanf("%lf",&sum);
+						if(point<0||sum/2<point){
+							exit(0);
+						}
+						b=line_C(sum,point);
+						sum=pow((sum/2),2);
+						printf("x^2/%.3lf + y^2/%.3lf=1\n",sum,b);
+					}
+					if(selection=='y'){
+						printf("초점 입력");
+						scanf("%lf",&point);
+						printf("거리의 합은?");
+						scanf("%lf",&sum);
+						if(point<0||sum/2<point){
+							exit(0);
+						}
+						a=line_C(sum,point);
+						sum=pow((sum/2),2);
+						printf("x^2/%.3lf + y^2/%.3lf=1\n",a,sum);
+					}
+					else{
+						break;
+					}
+					break;
+				case 4:
+					printf("포물선의 방정식이 x축인가 y축인가?");
+					scanf("%s",&selection);
+					if(selection=='x'){
+					printf("초점의 좌표를 입력:");
+					scanf("%lf",&point);
+					if(point==0){
+						printf("조건 오류\n");
+						break;
+					}
+					printf("준선의 방정식은:x=-%.2lf\n",point);
+					res=line_l(point);
+					printf("포물선의 방정식은:y^2=%.2lfx\n",res);
+					}
+					if(selection=='y'){
+					printf("초점의 좌표를 입력:");
+					scanf("%lf",&point); 
+					if(point==0){
+						printf("조건 오류\n");
+						break;
+					}
+					printf("준선의 방정식은:y=-%.2lf\n",point);
+					res=line_l(point);
+					printf("포물선의 방정식은:y^2=%.2lfx\n",res);
+					}
+					else{
+						break;
+					}
+					break;
+			}
+			break;
+		case 6:
+			system("cls");
+			printf("어떠한 수식을 계산하시겠습니까?\n");
+			printf("------------------- 1. 두 점 사이의 거리 2.선분의 내분점과 외분점 3.정사영의 길이와 넓이 4.평면벡터의 성분과 내적-------------------\n") ;
+			scanf("%d",&state);
+			switch(state){
+				case 1:
+					printf("첫번쨰 포인트의 x,y,z축 입력");
+					scanf("%lf %lf %lf",&x1,&y1,&z1);
+					printf("첫번쨰 포인트의 x,y,z축 입력");
+					scanf("%lf %lf %lf",&x2,&y2,&z2);
+					printf("%lf,%lf,%lf\n",x1,y1,z1); 
+					printf("%lf,%lf,%lf\n",x2,y2,z2);
+					if(x1==0&&y1==0&&z1==0){
+						lines=formula_2(x2,y2,z2);
+						printf("거리:%lf\n",lines);
+					}
+						lines=formula_1(x1,y1,z1,x2,y2,z2);
+						printf("거리:%lf\n",lines);
+					break;
+				case 2:
+					printf("메뉴를 고르십시오(1.내분,2.외분)");
+					scanf("%d",&sel);
+					printf("1번 포인트의 x,y,z축 입력");
+					scanf("%lf %lf %lf\n",&x1,&y1,&z1);
+					printf("2번 포인트의 x,y,z축 입력");
+					scanf("%lf %lf %lf\n",&x2,&y2,&z2);
+					if(sel==1){
+						printf("몇대 몇으로 내분하시겠습니까?");
+						scanf("%d %d",&m,&n);
+						if(m<0||n<0){
+							printf("조건 오류\n");
+							break;
+						}
+						x1=(m*x2+n*x1)/(m+n);
+						y1=(m*y2+n*y1)/(m+n);
+						z1=(m*z2+n*z1)/(m+n);
+						printf("%lf , %lf , %lf\n",x1,y1,z1);
+					}
+					if(sel==2){
+						printf("몇대 몇으로 외분하시겠습니까?");
+						scanf("%d %d",&m,&n);
+						if(m<0||n<0||m==n){
+							printf("조건 오류\n");
+							break;
+						}
+						x1=(m*x2-n*x1)/(m-n);
+						y1=(m*y2-n*y1)/(m-n);
+						z1=(m*z2-n*z1)/(m-n);
+						printf("%lf , %lf , %lf\n",x1,y1,z1);
+					}
+					break;
+				case 3:
+					printf("길이를 구하시려면 1 면적을 구하시려면 2를 입력사십시오");
+					scanf("%d",&sel); 
+					if(sel==1){
+					printf("직선의 길이는?");
+					scanf("%lf",&len);
+					if(len==0){
+							printf("조건 오류\n");
+							break;
+					}
+					printf("각도는?");
+					scanf("%lf",&rad);
+					rad=getradian(rad);
+					len=Orthodontist(len,rad);
+					printf("%lf\n",len);
+				}
+					if(sel==2){
+					printf("넓이는?");
+					scanf("%lf",&area);
+					if(area==0){
+							printf("조건 오류\n");
+							break;
+					}
+					printf("각도는?");
+					scanf("%lf",&rad);
+					rad=getradian(rad);
+					area=Orthodontist_Area(area,rad);
+					printf("%lf\n",area);
+				}
+					break;
+				case 4:
+					printf("메뉴를 고르십시오(1.크기,2.내적,3.각의 크기):");
+					scanf("%d",&sel);
+					switch(sel){
+						case 1:printf("a1과a2의 좌표 입력");
+							   scanf("%lf %lf",&a1,&a2);
+							   res=size_V(a1,a2);
+							   printf("%lf\n",res);
+						break;
+						case 2:printf("a1과a2의 좌표 입력");
+							   scanf("%lf %lf",&a1,&a2);
+							   printf("b1과b2의 좌표 입력");
+							   scanf("%lf %lf",&b1,&b2);
+							   printf("각도 입력");
+							   scanf("%lf",&rad);
+							   if(rad==0.0){
+							   	res=formula_V2(a1,b1,a2,b2);
+							   	printf("%lf",res);
+							   }
+							   rad=getradian(rad);
+							   res=formula_V1(a1,b1,a2,b2,rad);
+							   printf("%lf\n",res);
+						break;
+						case 3:printf("a1과a2의 좌표 입력");
+							   scanf("%lf %lf",&a1,&a2);
+							   printf("b1과b2의 좌표 입력");
+							   scanf("%lf %lf",&b1,&b2);
+							   res=size_Vrad(a1,b1,a2,b2);
+							   printf("%lf\n",res);
+						break;
+					}
+					break;
+			}
+			break;
+		}
+	}
+}
