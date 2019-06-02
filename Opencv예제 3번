@@ -1,0 +1,32 @@
+#include<opencv2/core/mat.hpp>
+#include<opencv2/imgcodecs.hpp>
+#include<opencv2/imgproc.hpp>
+#include<opencv2/highgui.hpp>
+
+#define PI 3.141592
+
+using namespace std;
+using namespace cv;
+
+int main(int argc, char *argv[]) {
+	String path = ("C:\\Users\\PC\\Downloads\\test.jpg");
+	Mat img_original = imread(path, IMREAD_COLOR);
+	Mat img_edge;
+
+	Mat img_gray = imread(path, IMREAD_GRAYSCALE);
+	Canny(img_gray, img_edge, 30, 90, 3);
+
+	vector<Vec4i> lines;
+	HoughLinesP(img_edge, lines, 1, PI / 180, 30, 30, 3);
+	for (int i = 0; i < lines.size(); i++) {
+		Vec4i L = lines[i];
+		line(img_original, Point(L[0], L[1]), Point(L[2], L[3]),
+		Scalar(0, 0, 255), 1, LINE_AA);
+		imshow("edge", img_edge);
+		imshow("result", img_original);
+		waitKey(0);
+		destroyAllWindows();
+		return 0;
+	}
+
+}
