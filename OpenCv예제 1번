@@ -1,0 +1,13 @@
+#include<opencv2\core\core.hpp>
+#include<opencv2\highgui\highgui.hpp>
+
+using namespace std;
+using namespace cv;
+
+int main(int argc, char *argv[]) {
+	Mat TestImg(Size(300, 300), CV_8UC3, Scalar(255, 0, 255));
+	imshow("red", TestImg);
+	waitKey(0);
+	destroyAllWindows();
+	return 0;
+}
