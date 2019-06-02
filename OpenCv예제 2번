@@ -1,0 +1,19 @@
+#include<opencv2\core\core.hpp>
+#include<opencv2\highgui\highgui.hpp>
+#include<opencv2\imgcodecs.hpp>
+#include<string>
+
+using namespace std;
+using namespace cv;
+
+int main(int argc, char *argv[]) {
+	String Path = ("C:\\Users\\PC\\Downloads\\test.jpg");
+	Mat redImg = imread(Path, IMREAD_COLOR);
+	Mat grayImg = imread(Path, IMREAD_GRAYSCALE);
+	imshow("Color", redImg);
+	imshow("gray", grayImg);
+	imwrite("Color_clone.jpg", redImg);
+	imwrite("gray_clone.jpg", grayImg);
+	waitKey(0);
+	destroyAllWindows();
+	return 0;
