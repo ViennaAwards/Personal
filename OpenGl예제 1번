@@ -1,0 +1,13 @@
+#include<gl/glut.h>
+
+void Display() {
+	glClear(GL_COLOR_BUFFER_BIT);
+	glRectf(1.0, 1.0, -1.0, -1.0);
+	glFlush();
+}
+int main() {
+	glutCreateWindow("Sample");
+	glutDisplayFunc(Display);
+	glutMainLoop();
+	return 0;
+}
